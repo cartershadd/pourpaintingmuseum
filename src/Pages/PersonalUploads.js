@@ -10,16 +10,13 @@ class PersonalUploads extends Component {
         super(props);
         this.state = {
             paintings: [],
-        };
+            isSignedIn: false,
+        }
     }
 
     deletePainting = (id) => {
         db.collection("paintings").doc(id).delete().then(function() {
             console.log("Document removed successfully!");
-            // eslint-disable-next-line no-lone-blocks
-            {
-                alert('Deleted successfully');
-            }
         }).catch(function(error) {
             console.error("Error removing document: ", + id, error);
         })

@@ -28,16 +28,19 @@ class UploadPage extends Component {
             other: false,
             blowtorch: false,
             image: '',
-            files: []
-        };
-        console.log(firebase.auth())
+            files: [],
+            isSignedIn: false
+        }
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.image)
+        if (this.state.isSignedIn === false) {
+            alert("Please login to upload a painting.");
+            return
+        }
         if (this.state.image === '') {
-            alert('Please select an image to upload.')
+            alert('Please select an image to upload.');
             return
         }
 
@@ -61,6 +64,7 @@ class UploadPage extends Component {
     };
 
     updateInput = e => {
+        console.log(e.target.name);
         this.setState({
             [e.target.name]: e.target.valueOf().checked
         });
@@ -133,6 +137,14 @@ class UploadPage extends Component {
         },
     };
 
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(
+            (user) => {
+                this.setState({isSignedIn: !!user});
+
+            });
+    };
+
     render() {
         return (
             <Form className="upload-form" onSubmit={this.onSubmit}>
@@ -154,12 +166,14 @@ class UploadPage extends Component {
                     <Form.Label column={2}>Technique</Form.Label>
                     {['checkbox'].map(type => (
                         <div key={`inline-${type}`} className="upload-checks">
-                            < Form.Check
+                            <Form.Check
                                 inline
                                 label="Dirty Pour"
                                 id="upload-radio1"
                                 onChange={this.updateInput}
                                 value={this.state.dirty}
+                                name="dirty"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -167,6 +181,8 @@ class UploadPage extends Component {
                                 id="upload-radio2"
                                 onChange={this.updateInput}
                                 value={this.state.flip}
+                                name="flip"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -174,6 +190,8 @@ class UploadPage extends Component {
                                 id="upload-radio3"
                                 onChange={this.updateInput}
                                 value={this.state.balloon}
+                                name="balloon"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -181,6 +199,8 @@ class UploadPage extends Component {
                                 id="upload-radio4"
                                 onChange={this.updateInput}
                                 value={this.state.dutch}
+                                name="dutch"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -188,6 +208,8 @@ class UploadPage extends Component {
                                 id="upload-radio5"
                                 onChange={this.updateInput}
                                 value={this.state.colander}
+                                name="colander"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -195,6 +217,8 @@ class UploadPage extends Component {
                                 id="upload-radio6"
                                 onChange={this.updateInput}
                                 value={this.state.hairdryer}
+                                name="hairdryer"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -202,6 +226,8 @@ class UploadPage extends Component {
                                 id="upload-radio7"
                                 onChange={this.updateInput}
                                 value={this.state.blowtorch}
+                                name="blowtorch"
+                                type="checkbox"
                             />
                         </div>
                     ))}
@@ -217,6 +243,8 @@ class UploadPage extends Component {
                                 id="upload-radio8"
                                 onChange={this.updateInput}
                                 value={this.state.floetrol}
+                                name="floetrol"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -224,6 +252,8 @@ class UploadPage extends Component {
                                 id="upload-radio9"
                                 onChange={this.updateInput}
                                 value={this.state.silicone}
+                                name="silicone"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -231,6 +261,8 @@ class UploadPage extends Component {
                                 id="upload-radio10"
                                 onChange={this.updateInput}
                                 value={this.state.liquitex}
+                                name="liquitex"
+                                type="checkbox"
                             />
                             <Form.Check
                                 inline
@@ -238,11 +270,13 @@ class UploadPage extends Component {
                                 id="upload-radio11"
                                 onChange={this.updateInput}
                                 value={this.state.other}
+                                name="other"
+                                type="checkbox"
                             />
                         </div>
                     ))}
                 </Form.Group>
-                <Button className="submit-button-upload" label="Submit" type="submit" size="lg" variant="outline-warning" value="Submit">Submit</Button>
+                <Button disabled={!this.state.isSignedIn} className="submit-button-upload" label="Submit" type="submit" size="lg" variant="outline-warning" value="Submit">Submit</Button>
             </Form>
         );
     }

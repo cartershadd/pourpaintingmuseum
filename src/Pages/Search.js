@@ -31,7 +31,6 @@ class Search extends Component {
         db.collection('paintings').get().then((querySnapshot) => {
             let artList = [];
             querySnapshot.forEach((doc) => {
-                console.log(doc.data());
                 artList.push(doc.data());
             });
 
