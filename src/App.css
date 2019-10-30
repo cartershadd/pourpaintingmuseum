@@ -2,21 +2,103 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+/*Button Styling*/
+
+.delete-button {
+  width: 4rem;
+  align-self: center;
+  font-size: small;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.filter-button{
+  margin: 1rem;
+}
+
+.upload-button {
+  margin: 1rem;
+}
+
+.submit-button-upload {
+  width: 10rem;
+  align-self: center;
+}
+
+/* Badge Styles */
+
+.badge-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0.25rem;
+}
+
+.badge {
+  width: 5rem;
+  margin: 0.5rem;
+}
+
+/* Form Styles*/
+.upload-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
 }
 
-.App-link {
-  color: #09d3ac;
+
+.form-label {
+  font-weight: bolder;
+}
+
+/* Painting Styles */
+
+.card {
+  border: none;
+}
+
+.painting-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.painting-thumbnail {
+  width: 20rem;
+  height: 30rem;
+  margin: 1rem;
+}
+
+/*Login & Post-Login Styles*/
+
+.login-greeting {
+  color: white;
+  font-size: x-small;
+}
+
+.display-pic {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.login-container {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+/* Filepond Styling */
+
+.filepond--wrapper{
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  width: 40rem;
+}
+
+/* Media Styles */
+
+@media screen and (min-width: 1000px) {
+  .navbar-toggler collapsed {
+    display: none !important;
+  }
 }
