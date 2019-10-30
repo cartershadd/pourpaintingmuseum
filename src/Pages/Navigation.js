@@ -68,7 +68,6 @@ class Navigation extends Component {
                     </Navbar.Collapse>
                 </Navbar>
             </div>
-
         )
     }
 }

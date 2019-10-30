@@ -91,6 +91,7 @@ class Search extends Component {
 
     onColanderClick = () => {
         this.setState({colander: !this.state.colander}, this.updatePaintings);
+
     };
 
     onBalloonClick = () => {
@@ -129,6 +130,13 @@ class Search extends Component {
         this.setState({other: !this.state.other}, this.updatePaintings);
     };
 
+    getStyle(selected) {
+        return {
+            background: selected ? 'cornflowerblue' : 'white',
+            color: selected ? 'white' : 'black'
+        }
+    }
+
     render() {
         return (
             <div>
@@ -137,17 +145,17 @@ class Search extends Component {
                         <Dropdown.Toggle variant="success" id="dropdown-basic" title="Filter" className="filter-button">Filter
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={this.onDutchClick} as="button">Dutch pour</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onBalloonClick} as="button">Balloon Technique</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onColanderClick} as="button">Colander</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onHairdryerClick} as="button">Hairdryer</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onSiliconeClick} as="button">Silicone</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onLiquitexClick} as="button">Liquitex</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onDirtyClick} as="button">Dirty Pour</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onFloetrolClick} as="button">Floetrol</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onFlipClick} as="button">Flip Cup</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onBlowtorchClick} as="button">Blowtorch</Dropdown.Item>
-                            <Dropdown.Item onClick={this.onOtherClick} as="button">Other</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.dutch)} onClick={this.onDutchClick} as="button">Dutch pour</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.balloon)} onClick={this.onBalloonClick} as="button">Balloon Technique</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.colander)} onClick={this.onColanderClick} as="button">Colander</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.hairdryer)} onClick={this.onHairdryerClick} as="button">Hairdryer</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.silicone)} onClick={this.onSiliconeClick} as="button">Silicone</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.liquitex)} onClick={this.onLiquitexClick} as="button">Liquitex</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.dirty)} onClick={this.onDirtyClick} as="button">Dirty Pour</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.floetrol)} onClick={this.onFloetrolClick} as="button">Floetrol</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.flip)} onClick={this.onFlipClick} as="button">Flip Cup</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.blowtorch)} onClick={this.onBlowtorchClick} as="button">Blowtorch</Dropdown.Item>
+                            <Dropdown.Item style={this.getStyle(this.state.other)} onClick={this.onOtherClick} as="button">Other</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
 

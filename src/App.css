@@ -37,6 +37,8 @@
   margin: 0.5rem;
 }
 
+/* Navigation */
+
 /* Form Styles*/
 .upload-form {
   display: flex;
@@ -57,12 +59,10 @@
 
 .painting-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .painting-thumbnail {
-  width: 20rem;
+  width: 19rem;
   height: 30rem;
   margin: 1rem;
 }
@@ -71,18 +71,19 @@
 
 .login-greeting {
   color: white;
-  font-size: x-small;
+  font-size: xx-small;
+  margin: 0;
 }
 
 .display-pic {
-  height: 5rem;
-  width: 5rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
 }
 
 .login-container {
   float: right;
-  margin: 0;
+  margin: 0.5rem;
   padding: 0;
 }
 
@@ -95,10 +96,36 @@
   width: 40rem;
 }
 
-/* Media Styles */
+/* Media Styling */
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .painting-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
 
-@media screen and (min-width: 1000px) {
-  .navbar-toggler collapsed {
-    display: none !important;
+  .mr-auto, .mr-auto a {
+    float: left;
+    width: 7rem;
+    text-align: start;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .painting-container {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mr-auto, .mr-auto a {
+    float: left;
+    width: 7rem;
+    text-align: start;
   }
 }
